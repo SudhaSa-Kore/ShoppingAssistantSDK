@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<script src="libs/jquery.js" type="text/javascript"></script>
+		<script src="libs/jquery.tmpl.min.js" type="text/javascript"></script>
+		<script src="libs/jquery-ui.min.js" type="text/javascript"></script>
+		<link href="libs/jquery-ui.min.css" rel="stylesheet"></link>
+		
+		<script src="kore-bot-sdk-client.js"></script>
+		<script src="chatWindow.js" type="text/javascript"></script>
+		<link href="chatWindow.css" rel="stylesheet"></link>
+		<script type="text/javascript">
+		$(document).on("ready",function(){
+			function assertion(options, callback) {
+                   console.log('in function');
+				// Client has to fill the claims and call the callback.
+				$.ajax({
+					url: "https://devbots.kore.com/api/users/sts",
+					type: 'post',
+					headers: {
+						Authorization: "bearer k1XzEzNvyl_Cr58I8UHIinPJVrQHEgAeJdkp1ZCE0XVW6VhS8Kdjmvj6iHPumnEW"
+					},
+					dataType: 'json',
+					success: function (data) {
+						options.assertion = data.jwt
+						callback(null, options);
+					}
+				})
+			}                           
+
+			var botOptions = {};
+			botOptions.logLevel = 'debug';
+			botOptions.koreAPIUrl = "https://devbots.kore.com/api/";
+			botOptions.assertionFn = assertion;
+			botOptions.isLoggedIn = false; // false: triggers anonymus flow. set it to true for log-in flow.
+			botOptions.clientId   = "cs-b2dacba9-a18f-5f0d-aad6-288d829c333f";
+			botOptions.botInfo = {name:"OCBC Bank","_id":"st-533dc03a-5bfd-554b-96cd-9a57a546a941"}; // pass bot name and stream id
+			
+			var chatConfig={
+				botOptions:botOptions
+			};
+
+			koreBotChat().show(chatConfig);
+			$('.openChatWindow').click(function(){
+				koreBotChat().show(chatConfig);
+			});
+		});
+		</script>
+	</head>
+	<body background="bank.png">
+	</body>
+</html>

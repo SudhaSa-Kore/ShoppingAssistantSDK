@@ -1,0 +1,31 @@
+{
+  "name": "koreinsurance",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "ejs": "^2.4.2",
+    "express": "~4.13.1",
+    "html": "0.0.10",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  },
+  "description": "This Web SDK allows you to talk to Bots over a web socket.",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudharanisanagapalli/Qatarsdk.git"
+  },
+  "keywords": [
+    "insurance"
+  ],
+  "author": "sudharani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sudharanisanagapalli/Qatarsdk/issues"
+  },
+  "homepage": "https://github.com/sudharanisanagapalli/Qatarsdk#readme"
+}
